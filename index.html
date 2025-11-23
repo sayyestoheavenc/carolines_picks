@@ -22,22 +22,21 @@
             margin: 20px;
             background-color: #fef8f1;
         }
+        .page-header {
+        width: 100%;
+        min-height: 250px; /* 設定一個最小高度，確保背景圖有足夠的顯示空間 */
+        background-image: url('images/banner/banner.png'); /* 設定背景圖片 */
+        background-size: cover; /* 讓背景圖盡可能覆蓋整個元素，可能會裁切部分圖片 */
+        background-position: center center; /* 圖片置中 */
+        background-repeat: no-repeat; /* 不重複背景圖 */
+        display: flex; /* 使用 flexbox 讓內部內容置中 */
+        align-items: center; /* 垂直置中 */
+        justify-content: center; /* 水平置中 */
+        color: white; /* 標題文字顏色，如果背景圖較深 */
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* 讓文字更清晰 */
+        margin-bottom: 30px; /* Header 下方的間距 */
+    }
 
-        /* 1. 頂部橫幅樣式 */
-        .header-banner {
-            width: 100%;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .header-banner img {
-            max-width: 100%;
-            height: auto;
-            border: 2px solid #ffcc00;
-            /* 突顯橫幅的邊框 */
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
 
         /* 2. Google Adsense 預留區樣式 (可調整) */
         .ads-container {
@@ -96,8 +95,8 @@
 
 <body>
 
-    <div class="header-banner">
-        <img src="images/banner/banner.png" alt="Banner from canva">
+    <div class="page-header">
+        <h1>我的產品網站</h1>
     </div>
 
     <div class="ads-container">
