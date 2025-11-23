@@ -217,12 +217,31 @@
 
             /* 確保 photo-cell 佔滿寬度並置中 */
             .photo-cell {
+                text-align: center !important;
+                /* 強制圖片容器內的內容水平置中 */
+                padding: 15px 0 0 0;
+                /* 調整邊距，確保左右沒有 padding 干擾 */
                 width: 100%;
-                text-align: center;
-                padding: 15px 15px 0 15px;
-                /* 調整內邊距 */
                 display: block;
-                border-bottom: none;
+            }
+
+            /* ------------------------------------- */
+            /* 2. 確保圖片本身能被 margin: auto 置中 */
+            /* ------------------------------------- */
+            .photo-cell img {
+                display: block;
+                /* 必須是區塊元素才能使用 margin: auto */
+                width: 90%;
+                max-width: 350px;
+                height: auto;
+
+                /* 關鍵：使用自動邊距強制置中 */
+                margin-left: auto !important;
+                /* 強制左邊距自動 */
+                margin-right: auto !important;
+                /* 強制右邊距自動 */
+                margin-top: 0;
+                margin-bottom: 0;
             }
 
             /* 修正 .image-container 在手機上的樣式 */
