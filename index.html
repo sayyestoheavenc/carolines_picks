@@ -19,76 +19,187 @@
         /* 基礎樣式設定 */
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            /* 移除邊距，讓背景圖貼合邊緣 */
+
+            /* **** 新增：設定背景圖片到整個 Body **** */
+            background-image: url('images/banner/banner.png');
+            /* 請確認你的圖片名稱 */
             background-color: #fef8f1;
-        }
-        .page-header {
-        width: 100%;
-        min-height: 250px; /* 設定一個最小高度，確保背景圖有足夠的顯示空間 */
-        background-image: url('images/banner/banner.png'); /* 設定背景圖片 */
-        background-size: 100% auto;
-        background-position: center center; /* 圖片置中 */
-        background-repeat: no-repeat; /* 不重複背景圖 */
-        display: flex; /* 使用 flexbox 讓內部內容置中 */
-        align-items: center; /* 垂直置中 */
-        justify-content: center; /* 水平置中 */
-        color: white; /* 標題文字顏色，如果背景圖較深 */
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* 讓文字更清晰 */
-        margin-bottom: 30px; /* Header 下方的間距 */
-    }
+            /* 如果圖片載入失敗或有空白時的備用背景色 */
 
+            /* 讓圖片填滿整個視窗，並保持比例，可能裁切邊緣 */
+            /* 如果希望圖片完整呈現不裁切，請使用 contain (可能重複或留白) */
+            background-size: cover;
 
-        /* 2. Google Adsense 預留區樣式 (可調整) */
-        .ads-container {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 25px;
-            padding: 15px;
-            background-color: #f7f7f7;
-            border: 1px dashed #999;
+            background-position: center top;
+            /* 圖片置中對齊頂部 */
+            background-repeat: no-repeat;
+
+            /* 讓背景圖片固定不動，只有內容可以捲動 (視差滾動效果) */
+            /* 如果不想要固定，請刪除這行 */
+            background-attachment: fixed;
+
+            padding: 20px;
+            /* 內容與瀏覽器邊緣的間距 */
         }
 
+        /* 內容包裹器 - 移除半透明背景 */
+        .content-area {
+            max-width: 960px;
+            /* 內容最大寬度 */
+            margin: 0 auto;
+            /* 水平置中 */
+            background-color: transparent;
+            /* 改為透明 */
+            padding: 0;
+            /* 移除 padding，讓內部元素自己控制間距 */
+            box-shadow: none;
+            /* 移除陰影 */
+            border-radius: 0;
+        }
 
-        /* 以下為表格樣式 (與之前相同) */
+        /* 新增 Table Wrapper 樣式 (用於包裹 h2 和 table) */
+        .table-wrapper {
+            margin-top: 20px;
+            padding: 30px;
+            border-radius: 12px;
+            /* **** 關鍵：在這裡設定半透明背景 **** */
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 產品表格樣式 - 確保表格本身的背景色是透明的，透出 table-wrapper 的半透明背景 */
+        /* 產品表格樣式 */
         .product-table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
+            /* **** 關鍵修正：將表格本身的背景設為透明 **** */
+            background-color: transparent;
+            border-radius: 8px;
+            overflow: hidden;
         }
+
+        /* 頂部 Header 標題區塊 */
+        .page-header {
+            width: 100%;
+            min-height: 150px;
+            background-color: transparent;
+            /* 完全透明，露出 Body 背景圖 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            /* 標題有半透明白底，易讀 */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Google Adsense 預留區樣式 */
+        .ads-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: #555;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
 
         .product-table th,
         .product-table td {
-            border: 1px solid #ccc;
-            padding: 10px;
+            border: 1px solid #eee;
+            padding: 15px;
             vertical-align: top;
+            text-align: left;
+            /* **** 新增：確保儲存格本身也是透明的 **** */
+            background-color: transparent;
+        }
+
+        .product-table th {
+            background-color: #e9ecef;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .product-table tbody tr:nth-child(even) {
+            /* 偶數行背景色 */
+            background-color: transparent;
         }
 
         .photo-cell {
-            width: 30%;
+            width: 25%;
             text-align: center;
         }
 
         .photo-cell img {
-            max-width: 100%;
-            height: auto;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            /* 確保圖片填滿空間且不變形 */
             display: block;
             margin: auto;
+            border-radius: 50%;
+            /* 圓形圖片 */
+            border: 3px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .content-cell {
-            width: 70%;
+            width: 75%;
         }
 
-        .description-area {
-            min-height: 100px;
+        .content-cell h3 {
+            color: #007bff;
+            margin-top: 0;
             margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 1px dashed #ddd;
+            font-size: 1.8em;
+        }
+
+        .content-cell p {
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        .link-area {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
         }
 
         .link-area a {
             color: steelblue;
             text-decoration: none;
             font-weight: bold;
+        }
+
+        .link-area a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -106,34 +217,46 @@
             crossorigin="anonymous"></script>
 
     </div>
+    <div class="table-wrapper">
+        <h2>有貓的咖啡廳/餐廳</h2>
 
-    <h2>有貓的咖啡廳/餐廳</h2>
-
-    <table class="product-table">
-        <thead>
-            <tr>
-                <th>產品照片 (第一欄)</th>
-                <th>產品詳情 (第二欄 - 內含上下兩個區塊)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="photo-cell">
-    <img src="images/product/the_little_plan_cafe.jpg" alt="The little plan cafe">
-</td>
-
-                <td class="content-cell">
-                    <div class="description-area">
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>照片</th>
+                    <th>詳情</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="photo-cell">
+                        <img src="images/product/the_little_plan_cafe.jpg" alt="The Little Plan café 的貓咪照片">
+                    </td>
+                    <td class="content-cell">
                         <h3>The Little Plan café</h3>
-                        <p>地點北越南河內，店員怕貓亂跑所以都拴在桌上，我坐在貓前面他就走上我大腿準備睡覺。</p>
-                    </div>
-                    <div class="link-area">
-                        <strong>Google map：</strong>
-                        <a href="https://maps.google.com/?cid=13425433835375390457&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl" target="_blank">The Little Plan café - Kế Hoạch Nhỏ café</a>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                        <p>地點北越南河內，店員怕貓亂跑所以都拴在桌上。我坐在貓前面他跳到我腿上我大聲準備睡覺。</p>
+                        <div class="link-area">
+                            <strong>Google map:</strong>
+                            <a href="https://maps.google.com/?cid=13425433835375390457&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl"
+                                target="_blank">The Little Plan café - Kế Hoạch Nhỏ café</a>
+                        </div>
+                    </td>
+                </tr>
 
+                <tr>
+                    <td class="photo-cell">
+                        <img src="images/product/toast_cafe.png" alt="Toast Chat 的貓咪照片">
+                    </td>
+                    <td class="content-cell">
+                        <h3>Toast Chat</h3>
+                        <p>國父紀念館附近，店裡有很多可愛的貓。店員都是辣妹。</p>
+                        <div class="link-area">
+                            <strong>Google map:</strong>
+                            <a href="https://maps.app.goo.gl/toastchatlink" target="_blank">Toast Chat</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
