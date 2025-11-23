@@ -181,161 +181,116 @@
         /* 📱 手機模式優化 (@media Query) - 垂直堆疊 */
         /* ------------------------------------- */
         @media (max-width: 600px) {
+            /* --- 1. RWD 基本佈局和間距 --- */
 
             .table-wrapper {
                 margin: 15px 15px 30px 15px;
-                /* 上下左右留出空間 */
                 padding: 10px;
-                /* 內部內邊距減小 */
             }
 
             .product-table th {
                 background-color: transparent;
-                /* 將表頭的背景設為透明，讓 .table-wrapper 的半透明背景透出 */
             }
 
             /* 讓每個產品列之間有間隔 */
             .product-table tr {
-                margin-bottom: 15px;
+                margin-bottom: 25px;
                 border: 1px solid #eee;
-                /* <--- 讓產品列有一個細邊框 */
                 border-radius: 8px;
-                /* <--- 讓產品列也有圓角 */
-                box-shadow: none;
-                /* 移除陰影 */
+                display: block;
+                /* 保持垂直堆疊 */
+                width: 100%;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+                /* 增加陰影，讓卡片更明顯 */
             }
 
-            /* 隱藏網頁預設表頭 */
             .product-table thead {
                 display: none;
             }
 
-            /* 表格主要樣式 */
             .product-table {
-                width: 100%;
-                border-collapse: collapse;
                 border: none;
-                /* <--- 移除表格自身的外部邊框，讓 .table-wrapper 承擔外框責任 */
                 margin-bottom: 0;
-                /* 移除底部邊距 */
             }
 
-            /* 讓每一列 (<tr>) 變成一個區塊，佔滿全寬 */
-            .product-table tbody,
-            .product-table tr {
-                display: block;
-                width: 100%;
-            }
+            /* --- 2. 圖片置中和尺寸修正 --- */
 
-            .product-table tr {
-                margin-bottom: 25px;
-                /* 增加卡片之間的垂直間距 */
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-                /* 讓卡片陰影更明顯 */
-            }
-
-            /* 讓內部的 h3/h4/h5 標題不要有過大的上邊距 */
-            .content-cell h3 {
-                margin-top: 0;
-                /* 讓產品名稱貼近卡片頂部 */
-            }
-
-            /* 讓每個儲存格 (<td>) 變成一個區塊，並垂直堆疊 */
-            .product-table td {
-                border: none;
-                /* 移除內部分隔線 */
-                padding: 10px 15px;
-                text-align: left;
-                position: relative;
-                /* 用於定位標籤 */
-            }
-
-            .photo-cell,
-            .content-cell {
-                display: block;
-                width: 100%;
-                /* 確保它們在手機上佔據整行 */
-                padding: 10px 15px;
-                /* 增加內邊距，讓內容不緊貼卡片邊緣 */
-                /* 由於它們現在是獨立的行，我們可以移除它們之間的邊界線 */
-                border: none;
-            }
-
+            /* 確保 photo-cell 佔滿寬度並置中 */
             .photo-cell {
-                /* 確保圖片區塊本身居中，並佔滿寬度 */
                 width: 100%;
                 text-align: center;
-                /* 讓圖片在這個區塊內置中 */
-                padding-top: 15px;
-                /* 圖片上方留出更多空間 */
-                padding-bottom: 10px;
-            }
-
-            .photo-cell img {
-                width: 90%;
-                max-width: 350px;
-                /* 確保圖片不要太大 */
+                padding: 15px 15px 0 15px;
+                /* 調整內邊距 */
                 display: block;
-                margin: 0 auto;
-                /* 確保圖片在 .photo-cell 內部水平置中 */
-                border-radius: 8px;
-                /* 圖片可以加上圓角，看起來更像卡片的一部分 */
-            }
-
-            /* 調整詳情區塊的垂直對齊 */
-            .content-cell {
-                text-align: left;
-                /* 詳情文字左對齊 */
-                padding-top: 0;
-                /* 頂部內邊距可以減少 */
-                word-wrap: break-word;
-                /* 舊版瀏覽器相容 */
-                overflow-wrap: break-word;
-                /* 現代標準 */
-            }
-
-            .content-cell a {
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-            }
-
-            /* 確保詳情區塊的內容垂直靠上 */
-            .content-cell h3,
-            .content-cell p,
-            .content-cell .link-area {
-                margin-top: 0;
-                margin-bottom: 10px;
-            }
-
-            /* 移除圖片下方的多餘分隔線（如果存在） */
-            .photo-cell {
                 border-bottom: none;
             }
 
+            /* 修正 .image-container 在手機上的樣式 */
+            .image-container {
+                width: 90%;
+                /* 讓容器佔據 90% 寬度 */
+                height: auto;
+                /* 讓高度自動，保持圖片比例 */
+                max-width: 350px;
+                /* 限制最大寬度 */
+                margin: 0 auto;
+                /* 核心置中 */
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                /* 圖片陰影 */
+            }
 
-            /* 調整主要標題 (例如 'Caroline's Picks') 的字體大小 */
+            /* 確保 .image-container 內的圖片能適應容器 */
+            .image-container img {
+                /* 保持桌面版的 object-fit: cover; */
+                object-fit: cover;
+            }
+
+            /* --- 3. 內容與文字換行修正 --- */
+
+            .content-cell {
+                width: 100%;
+                display: block;
+                text-align: left;
+                padding: 15px 15px 10px 15px;
+                /* 增加四邊內邊距 */
+                border: none;
+            }
+
+            /* **文字換行**：應用於整個內容儲存格 */
+            .content-cell,
+            .content-cell a,
+            .content-cell p {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            /* --- 4. 字體大小修正 (非常重要，提升可讀性) --- */
+
             h1 {
                 font-size: 2rem;
-                /* 將字體從可能很大的值縮小到 2.5rem */
                 line-height: 1.1;
             }
 
-            /* 調整次級標題 (例如 '有貓的咖啡廳/餐廳') 的字體大小 */
             h2 {
-                font-size: 1rem;
-                /* 將字體縮小到 1.5rem 左右 */
+                font-size: 1.3rem;
+                /* 標題二適度放大 */
             }
 
-
-            /* 調整表格內的產品名稱字體大小 (例如 <h3>) */
             h3 {
-                font-size: 0.8rem;
+                font-size: 1.1rem;
+                /* 產品名稱 */
+                margin-top: 0;
+                margin-bottom: 5px;
             }
 
-            /* 調整其他內文 (例如 <p>) 的字體大小 */
             p {
-                font-size: 0.6rem;
-                /* 確保內文在手機上閱讀舒適 */
+                font-size: 0.95rem;
+                /* 內文確保可讀性 */
+                margin-bottom: 10px;
+            }
+
+            .link-area a {
+                font-size: 0.95rem;
             }
         }
     </style>
