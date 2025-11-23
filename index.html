@@ -181,118 +181,106 @@
         /* 📱 手機模式優化 (@media Query) - 垂直堆疊 */
         /* ------------------------------------- */
         @media (max-width: 600px) {
-            /* --- 1. RWD 基本佈局和間距 --- */
+    /* --- 1. RWD 基本佈局和間距 --- */
+    
+    .table-wrapper {
+        margin: 15px 15px 30px 15px;
+        padding: 10px;
+    }
 
-            .table-wrapper {
-                margin: 15px 15px 30px 15px;
-                padding: 10px;
-            }
+    .product-table th {
+        background-color: transparent;
+    }
 
-            .product-table th {
-                background-color: transparent;
-            }
+    /* 讓每個產品列之間有間隔 */
+    .product-table tr {
+        margin-bottom: 25px; 
+        border: 1px solid #eee; 
+        border-radius: 8px; 
+        display: block; /* 保持垂直堆疊 */
+        width: 100%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* 增加陰影，讓卡片更明顯 */
+    }
 
-            /* 讓每個產品列之間有間隔 */
-            .product-table tr {
-                margin-bottom: 25px;
-                border: 1px solid #eee;
-                border-radius: 8px;
-                display: block;
-                /* 保持垂直堆疊 */
-                width: 100%;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-                /* 增加陰影，讓卡片更明顯 */
-            }
+    .product-table thead {
+        display: none;
+    }
 
-            .product-table thead {
-                display: none;
-            }
+    .product-table {
+        border: none;
+        margin-bottom: 0;
+    }
+    
+    /* --- 2. 圖片置中和尺寸修正 --- */
 
-            .product-table {
-                border: none;
-                margin-bottom: 0;
-            }
+    /* 確保 photo-cell 佔滿寬度並置中 */
+    .photo-cell {
+        width: 100%;
+        text-align: center;
+        padding: 15px 15px 0 15px; /* 調整內邊距 */
+        display: block;
+        border-bottom: none;
+    }
 
-            /* --- 2. 圖片置中和尺寸修正 --- */
+    /* 修正 .image-container 在手機上的樣式 */
+    .image-container {
+        width: 90%; /* 讓容器佔據 90% 寬度 */
+        height: auto; /* 讓高度自動，保持圖片比例 */
+        max-width: 350px; /* 限制最大寬度 */
+        margin: 0 auto; /* 核心置中 */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 圖片陰影 */
+    }
 
-            /* 確保 photo-cell 佔滿寬度並置中 */
-            .photo-cell {
-                width: 100%;
-                text-align: center;
-                padding: 15px 15px 0 15px;
-                /* 調整內邊距 */
-                display: block;
-                border-bottom: none;
-            }
+    /* 確保 .image-container 內的圖片能適應容器 */
+    .image-container img {
+        /* 保持桌面版的 object-fit: cover; */
+        object-fit: cover;
+    }
+    
+    /* --- 3. 內容與文字換行修正 --- */
 
-            /* 修正 .image-container 在手機上的樣式 */
-            .image-container {
-                width: 90%;
-                /* 讓容器佔據 90% 寬度 */
-                height: auto;
-                /* 讓高度自動，保持圖片比例 */
-                max-width: 350px;
-                /* 限制最大寬度 */
-                margin: 0 auto;
-                /* 核心置中 */
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-                /* 圖片陰影 */
-            }
+    .content-cell {
+        width: 100%;
+        display: block;
+        text-align: left;
+        padding: 15px 15px 10px 15px; /* 增加四邊內邊距 */
+        border: none;
+    }
+    
+    /* **文字換行**：應用於整個內容儲存格 */
+    .content-cell,
+    .content-cell a,
+    .content-cell p {
+        word-wrap: break-word; 
+        overflow-wrap: break-word; 
+    }
 
-            /* 確保 .image-container 內的圖片能適應容器 */
-            .image-container img {
-                /* 保持桌面版的 object-fit: cover; */
-                object-fit: cover;
-            }
+    /* --- 4. 字體大小修正 (非常重要，提升可讀性) --- */
 
-            /* --- 3. 內容與文字換行修正 --- */
+    h1 {
+        font-size: 2rem;
+        line-height: 1.1;
+    }
 
-            .content-cell {
-                width: 100%;
-                display: block;
-                text-align: left;
-                padding: 15px 15px 10px 15px;
-                /* 增加四邊內邊距 */
-                border: none;
-            }
+    h2 {
+        font-size: 1.3rem; /* 標題二適度放大 */
+    }
 
-            /* **文字換行**：應用於整個內容儲存格 */
-            .content-cell,
-            .content-cell a,
-            .content-cell p {
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-            }
+    h3 {
+        font-size: 1.1rem; /* 產品名稱 */
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
 
-            /* --- 4. 字體大小修正 (非常重要，提升可讀性) --- */
-
-            h1 {
-                font-size: 2rem;
-                line-height: 1.1;
-            }
-
-            h2 {
-                font-size: 1.3rem;
-                /* 標題二適度放大 */
-            }
-
-            h3 {
-                font-size: 1.1rem;
-                /* 產品名稱 */
-                margin-top: 0;
-                margin-bottom: 5px;
-            }
-
-            p {
-                font-size: 0.95rem;
-                /* 內文確保可讀性 */
-                margin-bottom: 10px;
-            }
-
-            .link-area a {
-                font-size: 0.95rem;
-            }
-        }
+    p {
+        font-size: 0.95rem; /* 內文確保可讀性 */
+        margin-bottom: 10px;
+    }
+    
+    .link-area a {
+        font-size: 0.95rem;
+    }
+}
     </style>
 </head>
 
