@@ -113,31 +113,36 @@
         }
 
         .image-container {
-            width: 150px;
-            /* 統一圖片容器的寬度 */
-            height: 150px;
-            /* 統一圖片容器的高度，形成正方形 */
-            overflow: hidden;
-            /* 隱藏超出容器的部分 */
-            border-radius: 8px;
-            /* 給圖片容器圓角 */
-            margin: 0 auto;
-            /* 水平置中 */
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            /* 圖片增加陰影 */
-        }
+    width: 180px; /* 統一圖片容器的寬度 (稍微放大一點) */
+    height: 180px; /* 統一圖片容器的高度，形成正方形 */
+    
+    overflow: hidden; /* <--- 裁剪超出部分 */
+    position: relative; /* 確保圖片能絕對定位 */
+    
+    border-radius: 8px; /* 圓角設定 */
+    margin: 0 auto; /* 水平置中 */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15); /* 增加陰影，凸顯卡片 */
+    
+    /* 移除所有可能導致白邊的背景色 */
+    background-color: transparent !important; 
+}
 
-        /* 讓圖片在容器內自動適應 */
-        .image-container img {
-            width: 100%;
-            /* 圖片寬度填滿容器 */
-            height: 100%;
-            /* 圖片高度填滿容器 */
-            object-fit: cover;
-            /* <--- 關鍵！保持圖片比例，裁切多餘部分以覆蓋容器 */
-            display: block;
-            /* 移除圖片底部的空白 */
-        }
+/* 讓圖片在容器內自動適應 */
+.image-container img {
+    /* 確保圖片佔滿容器，無論容器寬高 */
+    width: 100% !important; 
+    height: 100% !important; 
+    
+    object-fit: cover; /* <--- 關鍵：保持比例，裁剪多餘部分以覆蓋容器 */
+    object-position: center center; /* 確保圖片內容置中裁剪 */
+    
+    display: block;
+    border-radius: 8px; /* 確保圖片本身也有圓角 */
+    
+    /* 移除圖片上的任何間距 */
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
         /* 調整詳情欄位，確保不影響圖片欄位 */
         .content-cell {
@@ -304,26 +309,26 @@
 
             /* 調整主要標題 (例如 'Caroline's Picks') 的字體大小 */
             h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
                 /* 將字體從可能很大的值縮小到 2.5rem */
                 line-height: 1.1;
             }
 
             /* 調整次級標題 (例如 '有貓的咖啡廳/餐廳') 的字體大小 */
             h2 {
-                font-size: 1.5rem;
+                font-size: 1rem;
                 /* 將字體縮小到 1.5rem 左右 */
             }
 
 
             /* 調整表格內的產品名稱字體大小 (例如 <h3>) */
             h3 {
-                font-size: 1.1rem;
+                font-size: 0.8rem;
             }
 
             /* 調整其他內文 (例如 <p>) 的字體大小 */
             p {
-                font-size: 0.95rem;
+                font-size: 0.6rem;
                 /* 確保內文在手機上閱讀舒適 */
             }
         }
@@ -349,7 +354,7 @@
         <table class="product-table">
             <tbody>
                 <tr>
-                    <td class="photo-cell" >
+                    <td class="photo-cell">
                         <div class="image-container">
                             <img src="images/product/the_little_plan_cafe.jpg" alt="The Little Plan café 的貓咪照片">
                         </div>
