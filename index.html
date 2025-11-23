@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品資訊表格 - 含 Canva 橫幅</title>
+    <style>
+        /* 基礎樣式設定 */
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        
+        /* 1. 頂部橫幅樣式 */
+        .header-banner {
+            width: 100%;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .header-banner img {
+            max-width: 100%; 
+            height: auto;
+            border: 2px solid #ffcc00; /* 突顯橫幅的邊框 */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 2. Google Adsense 預留區樣式 (可調整) */
+        .ads-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f7f7f7;
+            border: 1px dashed #999;
+        }
+
+
+        /* 以下為表格樣式 (與之前相同) */
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .product-table th, .product-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            vertical-align: top;
+        }
+        .photo-cell {
+            width: 30%;
+            text-align: center;
+        }
+        .photo-cell img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+        .content-cell {
+            width: 70%;
+        }
+        .description-area {
+            min-height: 100px;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #ddd;
+        }
+        .link-area a {
+            color: steelblue;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-banner">
+        <img src="canva_banner.jpg" alt="使用 Canva 設計的網站橫幅">
+    </div>
+
+    <div class="ads-container">
+        <p style="color:#555;">[這裡是用來放置 Google Adsense 廣告單元程式碼的位置]</p>
+        
+        </div>
+    
+    <h2>產品資訊表 (表格內容)</h2>
+
+    <table class="product-table">
+        <thead>
+            <tr>
+                <th>產品照片 (第一欄)</th>
+                <th>產品詳情 (第二欄 - 內含上下兩個區塊)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="photo-cell">
+                    <img src="https://via.placeholder.com/200x150?text=Product+Image" alt="產品照片範例">
+                </td>
+
+                <td class="content-cell">
+                    <div class="description-area">
+                        <h3>產品名稱 A</h3>
+                        <p>這是關於產品 A 的詳細描述。這份表格是使用純 HTML 和 CSS 建立的。</p>
+                    </div>
+                    <div class="link-area">
+                        <strong>購買連結：</strong>
+                        <a href="#">點擊這裡前往購買頁面</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+    </table>
+    
+</body>
+</html>
