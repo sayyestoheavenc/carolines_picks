@@ -16,6 +16,11 @@
     </script>
 
     <style>
+        :root {
+            /* 定義一個半透明白色變數 */
+            --bg-transparent: rgba(255, 255, 255, 0.5);
+        }
+
         /* ------------------------------------- */
         /* 💻 預設樣式 (桌面/平板模式) - 兩欄並排 */
         /* ------------------------------------- */
@@ -34,7 +39,8 @@
             /* 防止圖片重複平鋪 */
             background-position: center top;
             /* 讓圖片置中，頂部對齊 (您可以調整為 center center 或其他) */
-            background-color: #fef8f1; /* 背景圖片載入失敗時，會顯示這個顏色 */
+            background-color: #fef8f1;
+            /* 背景圖片載入失敗時，會顯示這個顏色 */
         }
 
         .header-banner {
@@ -69,38 +75,106 @@
         }
 
         /* 表格主要樣式 */
-        .product-table {
-            width: 100%;
-            border-collapse: collapse;
-            border: 1px solid #ccc;
-            /* 在桌面模式下顯示外框 */
-            margin-bottom: 20px;
+        /* 讓每個儲存格 (<td>) 變成一個區塊，並垂直堆疊 */
+        .table-wrapper {
+            margin: 20px auto;
+            /* 上下邊距 20px，左右置中 */
+            max-width: 1000px;
+            /* 限制最大寬度，讓卡片不要太寬 */
+            background-color: white;
+            /* 設定白色背景 */
+            border-radius: 15px;
+            /* <--- 圓角設定 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            /* 增加陰影 */
+            padding: 20px;
+            /* 內部空間 */
+
+            background-color: var(--bg-transparent);
         }
 
-        .product-table th,
         .product-table td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            vertical-align: top;
+            border: none !important;
+            /* <--- 確保所有邊框都被移除 */
+            padding: 10px 15px;
+            text-align: left;
+            position: relative;
+
         }
 
-        .product-table th {
-            background-color: #f0f0f0;
+        /* 調整圖片欄位，讓圖片置中 (並確保移除右邊框) */
+        .photo-cell {
+            width: 40%;
+            /* 桌面模式下維持 30% 寬度 */
+            text-align: center;
+            vertical-align: middle;
+            /* 讓圖片在儲存格中垂直置中 */
         }
+
+        .image-container {
+            width: 150px;
+            /* 統一圖片容器的寬度 */
+            height: 150px;
+            /* 統一圖片容器的高度，形成正方形 */
+            overflow: hidden;
+            /* 隱藏超出容器的部分 */
+            border-radius: 8px;
+            /* 給圖片容器圓角 */
+            margin: 0 auto;
+            /* 水平置中 */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            /* 圖片增加陰影 */
+        }
+
+        /* 讓圖片在容器內自動適應 */
+        .image-container img {
+            width: 100%;
+            /* 圖片寬度填滿容器 */
+            height: 100%;
+            /* 圖片高度填滿容器 */
+            object-fit: cover;
+            /* <--- 關鍵！保持圖片比例，裁切多餘部分以覆蓋容器 */
+            display: block;
+            /* 移除圖片底部的空白 */
+        }
+
+        /* 調整詳情欄位，確保不影響圖片欄位 */
+        .content-cell {
+            border-left: none !important;
+            /* <--- 明確移除左邊框 */
+        }
+
+        .photo-cell img {
+            width: 90%;
+            max-width: 300px;
+        }
+
 
         /* 表頭底色 */
 
         /* 照片欄位 */
         .photo-cell {
-            width: 30%;
             text-align: center;
+            padding-bottom: 10px;
+            /* 增加底部內邊距 */
+            border-bottom: 1px solid #eee;
+            /* 在照片下方加上分隔線 */
+            display: block;
+            /* 讓圖片區塊獨立佔據一行 */
+            width: 100%;
+            /* 確保圖片區塊佔滿父容器寬度 */
         }
 
+        /* 讓圖片本身更大 */
         .photo-cell img {
-            max-width: 100%;
+            width: 90%;
+            /* 讓圖片佔據 .photo-cell 寬度的 90% */
+            max-width: 300px;
+            /* 設定一個最大寬度，避免圖片過大 */
             height: auto;
-            display: block;
-            margin: auto;
+            /* 保持圖片比例 */
+            margin: 0 auto;
+            /* 水平置中 */
         }
 
         /* 內容欄位 */
@@ -127,13 +201,45 @@
         /* ------------------------------------- */
         @media (max-width: 600px) {
 
+            .table-wrapper {
+                margin: 15px 15px 30px 15px;
+                /* 上下左右留出空間 */
+                padding: 10px;
+                /* 內部內邊距減小 */
+            }
+
+            .product-table th {
+                background-color: transparent;
+                /* 將表頭的背景設為透明，讓 .table-wrapper 的半透明背景透出 */
+            }
+
+            /* 讓每個產品列之間有間隔 */
+            .product-table tr {
+                margin-bottom: 15px;
+                border: 1px solid #eee;
+                /* <--- 讓產品列有一個細邊框 */
+                border-radius: 8px;
+                /* <--- 讓產品列也有圓角 */
+                box-shadow: none;
+                /* 移除陰影 */
+            }
+
             /* 隱藏網頁預設表頭 */
             .product-table thead {
                 display: none;
             }
 
+            /* 表格主要樣式 */
+            .product-table {
+                width: 100%;
+                border-collapse: collapse;
+                border: none;
+                /* <--- 移除表格自身的外部邊框，讓 .table-wrapper 承擔外框責任 */
+                margin-bottom: 0;
+                /* 移除底部邊距 */
+            }
+
             /* 讓每一列 (<tr>) 變成一個區塊，佔滿全寬 */
-            .product-table,
             .product-table tbody,
             .product-table tr {
                 display: block;
@@ -172,16 +278,19 @@
 
             /* 調整圖片欄位，讓圖片置中 */
             .photo-cell {
+                /* 移除 display: block; 和 width: 100%;，讓它在桌面保持表格行為 */
+                width: 30%;
+                /* 桌面模式下維持 30% 寬度 */
                 text-align: center;
-                padding-bottom: 5px;
-                border-bottom: 1px solid #eee;
-                /* 在照片下方加上分隔線 */
+                /* 移除 border-bottom: 1px solid #eee;，讓它只在 RWD 中顯示 */
             }
 
+            /* 讓圖片本身更大 */
             .photo-cell img {
-                width: 80%;
-                /* 圖片稍微縮小 */
-                max-width: 250px;
+                max-width: 100%;
+                /* 桌面模式下確保不超出欄位 */
+                height: auto;
+                /* 移除 width: 90%; 和 margin: 0 auto;，讓它只在 RWD 中生效 */
             }
 
             /* 內容欄位中的分隔線可以移除或簡化 */
@@ -237,27 +346,39 @@
         <h2>有貓的咖啡廳/餐廳</h2>
 
         <table class="product-table">
-            <thead>
-                <tr>
-                    <th>照片</th>
-                    <th>詳情</th>
-                </tr>
-            </thead>
             <tbody>
                 <tr>
                     <td class="photo-cell" data-label="照片">
-                        <img src="images/product/the_little_plan_cafe.jpg" alt="產品照片範例">
+                        <div class="image-container">
+                            <img src="images/product/the_little_plan_cafe.jpg" alt="The Little Plan café 的貓咪照片">
+                        </div>
                     </td>
-
-                    <td class="content-cell" data-label="詳情">
-                        <div class="description-area">
-                            <h3>產品名稱 A</h3>
-                            <p>這是關於產品 A 的詳細描述。這份表格是使用純 HTML 和 CSS 建立的。</p>
-                        </div>
+                    <td class="content-cell">
+                        <h3>The Little Plan café</h3>
+                        <p>地點北越南河內，店員怕貓亂跑所以都拴在桌上。我坐在貓前面他跳到我腿上睡覺。</p>
                         <div class="link-area">
-                            <strong>購買連結：</strong>
-                            <a href="#">點擊這裡前往購買頁面</a>
+                            <strong>Google map:</strong>
+                            <a href="https://maps.google.com/?cid=13425433835375390457&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl"
+                                target="_blank">The Little Plan café - Kế Hoạch Nhỏ café</a>
                         </div>
+                    </td>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="photo-cell" data-label="照片">
+                        <div class="image-container">
+                            <img src="images/product/toast_cafe.png" alt="Toast Chat 的貓咪照片">
+                        </div>
+                    </td>
+                    <td class="content-cell">
+                        <h3>Toast Chat</h3>
+                        <p>國父紀念館附近，店裡有很多可愛的貓。店員都是辣妹。</p>
+                        <div class="link-area">
+                            <strong>Google map:</strong>
+                            <a href="https://maps.app.goo.gl/toastchatlink" target="_blank">Toast Chat</a>
+                        </div>
+                    </td>
                     </td>
                 </tr>
             </tbody>
