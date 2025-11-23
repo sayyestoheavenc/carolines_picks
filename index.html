@@ -185,7 +185,7 @@
 
             .table-wrapper {
                 margin: 15px 15px 15px 15px;
-                
+                padding: 10px;
             }
 
             .product-table th {
@@ -194,6 +194,8 @@
 
             /* 讓每個產品列之間有間隔 */
             .product-table tr {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
                 margin-bottom: 25px;
                 border: 1px solid #eee;
                 border-radius: 8px;
@@ -202,6 +204,12 @@
                 width: 100%;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
                 /* 增加陰影，讓卡片更明顯 */
+            }
+
+            .product-table td {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                /* ... 其他 td 樣式保持不變 ... */
             }
 
             .product-table thead {
@@ -217,10 +225,12 @@
 
             /* 確保 photo-cell 佔滿寬度並置中 */
             .photo-cell {
+                /* 移除任何可能來自父級元素的 padding */
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+
+                /* 保持置中設定 */
                 text-align: center !important;
-                /* 強制圖片容器內的內容水平置中 */
-                padding: 0 0 0 0;
-                /* 調整邊距，確保左右沒有 padding 干擾 */
                 width: 100%;
                 display: block;
             }
@@ -229,14 +239,13 @@
             /* 2. 確保圖片本身能被 margin: auto 置中 */
             /* ------------------------------------- */
             .photo-cell img {
+                /* 強制所有邊距歸零，只讓左右自動計算 */
+                margin: 0 auto !important;
+
+                /* 重新確認置中屬性 */
                 display: block;
-                /* 讓圖片填滿 .image-container */
-                width: 100%;
-                height: 100%;
-                /* 保持桌面版的 object-fit: cover; */
-                object-fit: cover;
-                margin: 0;
-                /* 移除任何 margin */
+                width: 90%;
+                max-width: 350px;
             }
 
             /* 修正 .image-container 在手機上的樣式 */
@@ -244,7 +253,7 @@
                 width: 100%;
                 /* 讓容器佔據 90% 寬度 */
                 /* 讓高度自動，保持圖片比例 */
-            
+
                 margin: 0 auto !important;
                 /* **關鍵置中：讓容器置中** */
 
