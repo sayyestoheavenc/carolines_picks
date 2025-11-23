@@ -16,180 +16,96 @@
     </script>
 
     <style>
-        /* 基礎樣式設定 */
+        /* ------------------------------------- */
+        /* 💻 預設樣式 (桌面/平板模式) - 兩欄並排 */
+        /* ------------------------------------- */
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            /* 移除邊距，讓背景圖貼合邊緣 */
+            margin: 20px;
 
-            /* **** 新增：設定背景圖片到整個 Body **** */
+            /* **** 重新加入背景圖的關鍵程式碼 **** */
             background-image: url('images/banner/banner.png');
-            /* 請確認你的圖片名稱 */
-            background-color: #fef8f1;
-            /* 如果圖片載入失敗或有空白時的備用背景色 */
-
-            /* 讓圖片填滿整個視窗，並保持比例，可能裁切邊緣 */
-            /* 如果希望圖片完整呈現不裁切，請使用 contain (可能重複或留白) */
-            background-size: cover;
-
-            background-position: center top;
-            /* 圖片置中對齊頂部 */
+            /* 假設圖片檔名為 background.jpg，在根目錄下 */
+            background-size: contain;
+            /* 讓圖片覆蓋整個視窗，保持比例並可能裁切部分 */
+            background-attachment: scroll;
+            /* 讓背景圖隨著內容一起捲動 (這是預設值，也可以省略) */
             background-repeat: no-repeat;
-
-            /* 讓背景圖片固定不動，只有內容可以捲動 (視差滾動效果) */
-            /* 如果不想要固定，請刪除這行 */
-            background-attachment: fixed;
-
-            padding: 20px;
-            /* 內容與瀏覽器邊緣的間距 */
+            /* 防止圖片重複平鋪 */
+            background-position: center top;
+            /* 讓圖片置中，頂部對齊 (您可以調整為 center center 或其他) */
+            /* **** 程式碼結束 **** */
         }
 
-        /* 內容包裹器 - 移除半透明背景 */
-        .content-area {
-            max-width: 960px;
-            /* 內容最大寬度 */
-            margin: 0 auto;
-            /* 水平置中 */
-            background-color: transparent;
-            /* 改為透明 */
-            padding: 0;
-            /* 移除 padding，讓內部元素自己控制間距 */
-            box-shadow: none;
-            /* 移除陰影 */
-            border-radius: 0;
-        }
-
-        /* 新增 Table Wrapper 樣式 (用於包裹 h2 和 table) */
-        .table-wrapper {
-            margin-top: 20px;
-            padding: 30px;
-            border-radius: 12px;
-            /* **** 關鍵：在這裡設定半透明背景 **** */
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 產品表格樣式 - 確保表格本身的背景色是透明的，透出 table-wrapper 的半透明背景 */
-        /* 產品表格樣式 */
-        .product-table {
+        .header-banner {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            /* **** 關鍵修正：將表格本身的背景設為透明 **** */
-            background-color: transparent;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        /* 頂部 Header 標題區塊 */
-        .page-header {
-            width: 100%;
-            min-height: 150px;
-            background-color: transparent;
-            /* 完全透明，露出 Body 背景圖 */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
             margin-bottom: 30px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
+            text-align: center;
         }
 
-        .page-header h1 {
-            font-size: 3.5em;
-            margin: 0;
-            padding: 10px 20px;
-            background-color: rgba(255, 255, 255, 0.7);
-            /* 標題有半透明白底，易讀 */
+        .header-banner img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ffcc00;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        /* Google Adsense 預留區樣式 */
+        /* 廣告區塊 */
         .ads-container {
             width: 100%;
             text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
+            margin-bottom: 25px;
+            padding: 15px;
             background-color: #f7f7f7;
-            border: 1px dashed #ccc;
-            border-radius: 8px;
-            box-sizing: border-box;
+            border: 1px dashed #999;
         }
 
-        h2 {
-            text-align: center;
-            color: #555;
-            margin-top: 0;
-            margin-bottom: 30px;
-            font-size: 2.2em;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 10px;
+        /* 表格主要樣式 */
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+            /* 在桌面模式下顯示外框 */
+            margin-bottom: 20px;
         }
-
 
         .product-table th,
         .product-table td {
-            border: 1px solid #eee;
-            padding: 15px;
+            border: 1px solid #ccc;
+            padding: 10px;
             vertical-align: top;
-            text-align: left;
-            /* **** 新增：確保儲存格本身也是透明的 **** */
-            background-color: transparent;
         }
 
         .product-table th {
-            background-color: #e9ecef;
-            color: #333;
-            font-weight: bold;
-            text-align: center;
+            background-color: #f0f0f0;
         }
 
-        .product-table tbody tr:nth-child(even) {
-            /* 偶數行背景色 */
-            background-color: transparent;
-        }
+        /* 表頭底色 */
 
+        /* 照片欄位 */
         .photo-cell {
-            width: 25%;
+            width: 30%;
             text-align: center;
         }
 
         .photo-cell img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            /* 確保圖片填滿空間且不變形 */
+            max-width: 100%;
+            height: auto;
             display: block;
             margin: auto;
-            border-radius: 50%;
-            /* 圓形圖片 */
-            border: 3px solid #ddd;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
+        /* 內容欄位 */
         .content-cell {
-            width: 75%;
+            width: 70%;
         }
 
-        .content-cell h3 {
-            color: #007bff;
-            margin-top: 0;
+        .description-area {
+            min-height: 100px;
             margin-bottom: 10px;
-            font-size: 1.8em;
-        }
-
-        .content-cell p {
-            line-height: 1.6;
-            color: #444;
-            margin-bottom: 15px;
-        }
-
-        .link-area {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px dashed #ddd;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #ddd;
         }
 
         .link-area a {
@@ -198,8 +114,77 @@
             font-weight: bold;
         }
 
-        .link-area a:hover {
-            text-decoration: underline;
+
+        /* ------------------------------------- */
+        /* 📱 手機模式優化 (@media Query) - 垂直堆疊 */
+        /* ------------------------------------- */
+        @media (max-width: 600px) {
+
+            /* 隱藏網頁預設表頭 */
+            .product-table thead {
+                display: none;
+            }
+
+            /* 讓每一列 (<tr>) 變成一個區塊，佔滿全寬 */
+            .product-table,
+            .product-table tbody,
+            .product-table tr {
+                display: block;
+                width: 100%;
+            }
+
+            /* 讓每個產品列之間有間隔 */
+            .product-table tr {
+                margin-bottom: 20px;
+                border: 2px solid #ccc;
+                /* 讓每個產品區塊更明顯 */
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            }
+
+            /* 讓每個儲存格 (<td>) 變成一個區塊，並垂直堆疊 */
+            .product-table td {
+                border: none;
+                /* 移除內部分隔線 */
+                padding: 10px 15px;
+                text-align: left;
+                position: relative;
+                /* 用於定位標籤 */
+            }
+
+            /* 顯示自訂的欄位名稱 (Label) */
+            .product-table td::before {
+                /* 使用 HTML 步驟一中設定的 data-label 屬性作為內容 */
+                content: attr(data-label) ": ";
+                font-weight: bold;
+                display: block;
+                /* 讓標籤單獨佔一行 */
+                color: #333;
+                margin-bottom: 5px;
+            }
+
+            /* 調整圖片欄位，讓圖片置中 */
+            .photo-cell {
+                text-align: center;
+                padding-bottom: 5px;
+                border-bottom: 1px solid #eee;
+                /* 在照片下方加上分隔線 */
+            }
+
+            .photo-cell img {
+                width: 80%;
+                /* 圖片稍微縮小 */
+                max-width: 250px;
+            }
+
+            /* 內容欄位中的分隔線可以移除或簡化 */
+            .content-cell .description-area {
+                min-height: auto;
+                border-bottom: none;
+                padding-bottom: 0;
+                margin-bottom: 10px;
+            }
+
         }
     </style>
 </head>
@@ -229,12 +214,30 @@
             </thead>
             <tbody>
                 <tr>
+                    <td class="photo-cell" data-label="照片">
+                        <img src="images/product/the_little_plan_cafe.jpg" alt="產品照片範例">
+                    </td>
+
+                    <td class="content-cell" data-label="詳情">
+                        <div class="description-area">
+                            <h3>產品名稱 A</h3>
+                            <p>這是關於產品 A 的詳細描述。這份表格是使用純 HTML 和 CSS 建立的。</p>
+                        </div>
+                        <div class="link-area">
+                            <strong>購買連結：</strong>
+                            <a href="#">點擊這裡前往購買頁面</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
                     <td class="photo-cell">
                         <img src="images/product/the_little_plan_cafe.jpg" alt="The Little Plan café 的貓咪照片">
                     </td>
                     <td class="content-cell">
                         <h3>The Little Plan café</h3>
-                        <p>地點北越南河內，店員怕貓亂跑所以都拴在桌上。我坐在貓前面他跳到我腿上我大聲準備睡覺。</p>
+                        <p>地點北越南河內，店員怕貓亂跑所以都拴在桌上。我坐在貓前面他跳到我腿上我準備睡覺。</p>
                         <div class="link-area">
                             <strong>Google map:</strong>
                             <a href="https://maps.google.com/?cid=13425433835375390457&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl"
