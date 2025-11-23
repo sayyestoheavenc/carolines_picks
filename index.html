@@ -113,36 +113,30 @@
         }
 
         .image-container {
-    width: 180px; /* 統一圖片容器的寬度 (稍微放大一點) */
-    height: 180px; /* 統一圖片容器的高度，形成正方形 */
-    
-    overflow: hidden; /* <--- 裁剪超出部分 */
-    position: relative; /* 確保圖片能絕對定位 */
-    
-    border-radius: 8px; /* 圓角設定 */
-    margin: 0 auto; /* 水平置中 */
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15); /* 增加陰影，凸顯卡片 */
-    
-    /* 移除所有可能導致白邊的背景色 */
-    background-color: transparent !important; 
-}
+            width: 200px;
+            /* <--- 建議桌面版圖片顯示 200x200 像素 */
+            height: 200px;
+            /* <--- 與寬度相同，確保方形 */
 
-/* 讓圖片在容器內自動適應 */
-.image-container img {
-    /* 確保圖片佔滿容器，無論容器寬高 */
-    width: 100% !important; 
-    height: 100% !important; 
-    
-    object-fit: cover; /* <--- 關鍵：保持比例，裁剪多餘部分以覆蓋容器 */
-    object-position: center center; /* 確保圖片內容置中裁剪 */
-    
-    display: block;
-    border-radius: 8px; /* 確保圖片本身也有圓角 */
-    
-    /* 移除圖片上的任何間距 */
-    margin: 0 !important;
-    padding: 0 !important;
-}
+            overflow: hidden;
+            position: relative;
+            border-radius: 8px;
+            margin: 0 auto;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+            background-color: transparent !important;
+        }
+
+        /* 確保 .image-container img 內圖片填充容器 */
+        .image-container img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+            border-radius: 8px;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
 
         /* 調整詳情欄位，確保不影響圖片欄位 */
         .content-cell {
@@ -150,37 +144,18 @@
             /* <--- 明確移除左邊框 */
         }
 
-        .photo-cell img {
-            width: 90%;
-            max-width: 300px;
-        }
-
-
-        /* 表頭底色 */
-
-        /* 照片欄位 */
         .photo-cell {
+            width: 30%;
+            /* 確保欄位本身有足夠空間 */
             text-align: center;
-            padding-bottom: 10px;
-            /* 增加底部內邊距 */
-            border-bottom: 1px solid #eee;
-            /* 在照片下方加上分隔線 */
-            display: block;
-            /* 讓圖片區塊獨立佔據一行 */
-            width: 100%;
-            /* 確保圖片區塊佔滿父容器寬度 */
         }
 
-        /* 讓圖片本身更大 */
         .photo-cell img {
-            width: 90%;
-            /* 讓圖片佔據 .photo-cell 寬度的 90% */
-            max-width: 300px;
-            /* 設定一個最大寬度，避免圖片過大 */
+            max-width: 100%;
+            /* 避免圖片超過欄位寬度 */
             height: auto;
-            /* 保持圖片比例 */
-            margin: 0 auto;
-            /* 水平置中 */
+            display: block;
+            margin: auto;
         }
 
         /* 內容欄位 */
@@ -271,17 +246,6 @@
                 /* 用於定位標籤 */
             }
 
-            /* 顯示自訂的欄位名稱 (Label) */
-            .product-table td::before {
-                /* 使用 HTML 步驟一中設定的 data-label 屬性作為內容 */
-                content: attr(data-label) ": ";
-                font-weight: bold;
-                display: block;
-                /* 讓標籤單獨佔一行 */
-                color: #333;
-                margin-bottom: 5px;
-            }
-
             /* 調整圖片欄位，讓圖片置中 */
             .photo-cell {
                 /* 移除 display: block; 和 width: 100%;，讓它在桌面保持表格行為 */
@@ -356,7 +320,8 @@
                 <tr>
                     <td class="photo-cell">
                         <div class="image-container">
-                            <img src="images/product/the_little_plan_cafe.jpg" alt="The Little Plan café 的貓咪照片">
+                            <img src="https://res.cloudinary.com/dfzjtpp8f/image/upload/c_fill,w_400,h_400/v1763909112/the_little_plan_cafe_mbvxrj.jpg"
+                                alt="The Little Plan café 的貓咪照片">
                         </div>
                     </td>
                     <td class="content-cell">
@@ -374,7 +339,7 @@
                 <tr>
                     <td class="photo-cell">
                         <div class="image-container">
-                            <img src="images/product/toast_cafe.png" alt="Toast Chat 的貓咪照片">
+                            <img src="https://res.cloudinary.com/dfzjtpp8f/image/upload/c_fill,w_400,h_400/v1763909053/20251120_213310_toafoc.jpg" alt="Toast Chat 的貓咪照片">
                         </div>
                     </td>
                     <td class="content-cell">
