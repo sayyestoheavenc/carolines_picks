@@ -54,11 +54,18 @@
         /* 廣告區塊 */
         .ads-container {
             width: 100%;
+            /* 讓內容水平置中 */
             text-align: center;
-            margin-bottom: 25px;
-            padding: 15px;
-            background-color: #f7f7f7;
-            border: 1px dashed #999;
+            margin: 25px 0;
+            /* 上下邊距保持，移除左右邊距 */
+            padding: 0;
+            /* 移除 padding，讓廣告單元可以緊貼邊緣 */
+            background-color: transparent;
+            /* 移除背景色，讓廣告看起來更融入 */
+            border: none;
+            /* 移除邊框 */
+            /* 重要：讓容器的高度由廣告內容決定 */
+            min-height: 0;
         }
 
         /* 表格主要樣式 */
@@ -197,6 +204,7 @@
                 font-size: 1.5rem;
                 /* 將字體縮小到 1.5rem 左右 */
             }
+
 
             /* 調整表格內的產品名稱字體大小 (例如 <h3>) */
             h3 {
