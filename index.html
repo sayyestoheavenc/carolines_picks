@@ -261,15 +261,25 @@
                 border: none;
             }
 
-            /* 確保圖片在卡片內有足夠的空間 */
             .photo-cell {
-                padding-bottom: 0;
-                /* 圖片下方不需要太多空間 */
+                /* 確保圖片區塊本身居中，並佔滿寬度 */
+                width: 100%;
+                text-align: center;
+                /* 讓圖片在這個區塊內置中 */
+                padding-top: 15px;
+                /* 圖片上方留出更多空間 */
+                padding-bottom: 10px;
             }
 
             .photo-cell img {
-                margin-top: 10px;
-                /* 圖片上方留出空間 */
+                width: 90%;
+                max-width: 350px;
+                /* 確保圖片不要太大 */
+                display: block;
+                margin: 0 auto;
+                /* 確保圖片在 .photo-cell 內部水平置中 */
+                border-radius: 8px;
+                /* 圖片可以加上圓角，看起來更像卡片的一部分 */
             }
 
             /* 調整詳情區塊的垂直對齊 */
@@ -278,6 +288,15 @@
                 /* 詳情文字左對齊 */
                 padding-top: 0;
                 /* 頂部內邊距可以減少 */
+                word-wrap: break-word;
+                /* 舊版瀏覽器相容 */
+                overflow-wrap: break-word;
+                /* 現代標準 */
+            }
+
+            .content-cell a {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
             }
 
             /* 確保詳情區塊的內容垂直靠上 */
