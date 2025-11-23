@@ -227,13 +227,17 @@
                 width: 100%;
             }
 
-            /* 讓每個產品列之間有間隔 */
             .product-table tr {
-                margin-bottom: 20px;
-                border: 2px solid #ccc;
-                /* 讓每個產品區塊更明顯 */
-                border-radius: 5px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+                margin-bottom: 25px;
+                /* 增加卡片之間的垂直間距 */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+                /* 讓卡片陰影更明顯 */
+            }
+
+            /* 讓內部的 h3/h4/h5 標題不要有過大的上邊距 */
+            .content-cell h3 {
+                margin-top: 0;
+                /* 讓產品名稱貼近卡片頂部 */
             }
 
             /* 讓每個儲存格 (<td>) 變成一個區塊，並垂直堆疊 */
@@ -246,30 +250,49 @@
                 /* 用於定位標籤 */
             }
 
-            /* 調整圖片欄位，讓圖片置中 */
+            .photo-cell,
+            .content-cell {
+                display: block;
+                width: 100%;
+                /* 確保它們在手機上佔據整行 */
+                padding: 10px 15px;
+                /* 增加內邊距，讓內容不緊貼卡片邊緣 */
+                /* 由於它們現在是獨立的行，我們可以移除它們之間的邊界線 */
+                border: none;
+            }
+
+            /* 確保圖片在卡片內有足夠的空間 */
             .photo-cell {
-                /* 移除 display: block; 和 width: 100%;，讓它在桌面保持表格行為 */
-                width: 30%;
-                /* 桌面模式下維持 30% 寬度 */
-                text-align: center;
-                /* 移除 border-bottom: 1px solid #eee;，讓它只在 RWD 中顯示 */
-            }
-
-            /* 讓圖片本身更大 */
-            .photo-cell img {
-                max-width: 100%;
-                /* 桌面模式下確保不超出欄位 */
-                height: auto;
-                /* 移除 width: 90%; 和 margin: 0 auto;，讓它只在 RWD 中生效 */
-            }
-
-            /* 內容欄位中的分隔線可以移除或簡化 */
-            .content-cell .description-area {
-                min-height: auto;
-                border-bottom: none;
                 padding-bottom: 0;
+                /* 圖片下方不需要太多空間 */
+            }
+
+            .photo-cell img {
+                margin-top: 10px;
+                /* 圖片上方留出空間 */
+            }
+
+            /* 調整詳情區塊的垂直對齊 */
+            .content-cell {
+                text-align: left;
+                /* 詳情文字左對齊 */
+                padding-top: 0;
+                /* 頂部內邊距可以減少 */
+            }
+
+            /* 確保詳情區塊的內容垂直靠上 */
+            .content-cell h3,
+            .content-cell p,
+            .content-cell .link-area {
+                margin-top: 0;
                 margin-bottom: 10px;
             }
+
+            /* 移除圖片下方的多餘分隔線（如果存在） */
+            .photo-cell {
+                border-bottom: none;
+            }
+
 
             /* 調整主要標題 (例如 'Caroline's Picks') 的字體大小 */
             h1 {
@@ -339,7 +362,8 @@
                 <tr>
                     <td class="photo-cell">
                         <div class="image-container">
-                            <img src="https://res.cloudinary.com/dfzjtpp8f/image/upload/c_fill,w_400,h_400/v1763909053/20251120_213310_toafoc.jpg" alt="Toast Chat 的貓咪照片">
+                            <img src="https://res.cloudinary.com/dfzjtpp8f/image/upload/c_fill,w_400,h_400/v1763909053/20251120_213310_toafoc.jpg"
+                                alt="Toast Chat 的貓咪照片">
                         </div>
                     </td>
                     <td class="content-cell">
