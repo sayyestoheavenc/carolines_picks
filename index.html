@@ -272,12 +272,15 @@
             /* --- 3. 內容與文字換行修正 --- */
 
             .content-cell {
-                width: 100%;
-                display: block;
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+                padding-top: 5px !important;
+                /* 頂部只需要一點點空間 */
+                padding-bottom: 15px !important;
+                /* 底部增加空間 */
+
+                /* 確保卡片內的標題與圖片有適當距離 */
                 text-align: left;
-                padding: 15px 15px 10px 15px;
-                /* 增加四邊內邊距 */
-                border: none;
             }
 
             /* **文字換行**：應用於整個內容儲存格 */
