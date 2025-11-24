@@ -26,26 +26,6 @@
         /* 💻 預設樣式 (桌面/平板模式) - 兩欄並排 */
         /* ------------------------------------- */
 
-
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-
-            /* **** 重新加入背景圖的關鍵程式碼 **** */
-            background-image: url('images/banner/banner.png');
-            /* 假設圖片檔名為 background.jpg，在根目錄下 */
-            background-size: contain;
-            /* 讓圖片覆蓋整個視窗，保持比例並可能裁切部分 */
-            background-attachment: scroll;
-            /* 讓背景圖隨著內容一起捲動 (這是預設值，也可以省略) */
-            background-repeat: no-repeat;
-            /* 防止圖片重複平鋪 */
-            background-position: center top;
-            /* 讓圖片置中，頂部對齊 (您可以調整為 center center 或其他) */
-            background-color: #fef8f1;
-            /* 背景圖片載入失敗時，會顯示這個顏色 */
-        }
-
         /* 確保整個標題區塊是 Flexbox 容器 */
         .header-link-wrapper {
             display: flex;
@@ -58,25 +38,6 @@
             /* 確保標題文字顏色不會變成藍色 */
             padding: 0 10px;
             /* 增加左右一點點內邊距 */
-        }
-
-        .main-header::before,
-        .main-header::after {
-            content: none !important;
-            /* 強制移除所有偽元素內容 */
-            visibility: hidden !important;
-        }
-
-        .header-link-wrapper::before,
-        .header-link-wrapper::after {
-            content: none !important;
-            visibility: hidden !important;
-        }
-
-        /* 檢查 h2 (有貓的咖啡廳/餐廳) 周圍是否有不必要的元素 */
-        .section-title::before,
-        .section-title::after {
-            content: none !important;
         }
 
         /* 確保主標題容器是置中的 */
@@ -103,6 +64,49 @@
         .site-title {
             font-size: 3rem;
             margin: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+
+            /* **** 重新加入背景圖的關鍵程式碼 **** */
+            background-image: url('images/banner/banner.png');
+            /* 假設圖片檔名為 background.jpg，在根目錄下 */
+            background-size: contain;
+            /* 讓圖片覆蓋整個視窗，保持比例並可能裁切部分 */
+            background-attachment: scroll;
+            /* 讓背景圖隨著內容一起捲動 (這是預設值，也可以省略) */
+            background-repeat: no-repeat;
+            /* 防止圖片重複平鋪 */
+            background-position: center top;
+            /* 讓圖片置中，頂部對齊 (您可以調整為 center center 或其他) */
+            background-color: #fef8f1;
+            /* 背景圖片載入失敗時，會顯示這個顏色 */
+        }
+
+        .main-header {
+            display: flex;
+            /* 啟用 Flexbox 佈局 */
+            align-items: center;
+            /* 讓所有內容垂直居中對齊 */
+            justify-content: space-between;
+            /* 讓標題和 Icon 分散到兩側 */
+            padding: 0 20px;
+            /* 頂部左右增加一點空間 */
+            margin-bottom: 20px;
+        }
+
+        /* Threads Icon 圖片大小和樣式 */
+        .threads-icon {
+            height: 40px;
+            /* 根據您的截圖，設定一個適當的高度 */
+            width: auto;
+            cursor: pointer;
+            border-radius: 8px;
+            /* 讓圖片邊角圓潤 */
+            margin-left: 15px;
+            /* 與主標題保持間距 */
         }
 
         .header-banner {
@@ -381,7 +385,7 @@
 
 <body>
 
-    <<header class="main-header">
+    <header class="main-header">
 
         <a href="https://www.threads.com/@say.yes.to.heaven.c" target="_blank" class="header-link-wrapper">
 
@@ -391,85 +395,85 @@
 
         </a>
 
-        </header>
+    </header>
 
-        <div class="ads-container">
+    <div class="ads-container">
 
-            <script async
-                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5378294033772734"
-                crossorigin="anonymous"></script>
+        <script async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5378294033772734"
+            crossorigin="anonymous"></script>
 
-        </div>
-        <div class="table-wrapper">
-            <h2>Free Gift</h2>
+    </div>
+    <div class="table-wrapper">
+        <h2>Free Gift</h2>
 
-            <table class="product-table">
-                <tbody>
-                    <tr>
-                        <td class="photo-cell">
-                            <div class="image-container">
-                                <img src="https://res.cloudinary.com/dfzjtpp8f/image/upload/c_fill,w_400,h_400/v1763916133/MEITU_20251124_004052927_s44u5x.jpg"
-                                    alt="Jo malone">
-                            </div>
-                        </td>
-                        <td class="content-cell">
-                            <h3>JO MALONE LONDON</h3>
-                            <p>用個資換贈品，字母吊飾（隨機），似乎也可以當耳環（？）</p>
-                            <div class="link-area">
-                                <strong>這裡填單選擇領取地點:</strong>
-                                <p> </p>
-                                <a href="https://www.form.digitalcapture.elcompanies.com/form/TWN/jomalone/8eBuT3ooB0?utm_medium=messagingapp_business_push&utm_source=line&utm_campaign=newsletter_message&utm_content=holiday-sots-launchevent-1006_always-on&utm_term=brand"
-                                    target="_blank">JO MALONE LONDON</a>
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="table-wrapper">
-            <h2>有貓的咖啡廳/餐廳</h2>
+        <table class="product-table">
+            <tbody>
+                <tr>
+                    <td class="photo-cell">
+                        <div class="image-container">
+                            <img src="https://res.cloudinary.com/dfzjtpp8f/image/upload/c_fill,w_400,h_400/v1763916133/MEITU_20251124_004052927_s44u5x.jpg"
+                                alt="Jo malone">
+                        </div>
+                    </td>
+                    <td class="content-cell">
+                        <h3>JO MALONE LONDON</h3>
+                        <p>用個資換贈品，字母吊飾（隨機），似乎也可以當耳環（？）</p>
+                        <div class="link-area">
+                            <strong>這裡填單選擇領取地點:</strong>
+                            <p> </p>
+                            <a href="https://www.form.digitalcapture.elcompanies.com/form/TWN/jomalone/8eBuT3ooB0?utm_medium=messagingapp_business_push&utm_source=line&utm_campaign=newsletter_message&utm_content=holiday-sots-launchevent-1006_always-on&utm_term=brand"
+                                target="_blank">JO MALONE LONDON</a>
+                        </div>
+                    </td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-wrapper">
+        <h2>有貓的咖啡廳/餐廳</h2>
 
-            <table class="product-table">
-                <tbody>
-                    <tr>
-                        <td class="photo-cell">
-                            <div class="image-container">
-                                <img src="https://res.cloudinary.com/dfzjtpp8f/image/upload/c_fill,w_400,h_400/v1763909112/the_little_plan_cafe_mbvxrj.jpg"
-                                    alt="The Little Plan café 的貓咪照片">
-                            </div>
-                        </td>
-                        <td class="content-cell">
-                            <h3>The Little Plan café</h3>
-                            <p>這在河內，就...有路過的話可以去XD</p>
-                            <div class="link-area">
-                                <strong>Google map:</strong>
-                                <p> </p>
-                                <a href="https://maps.google.com/?cid=13425433835375390457&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl"
-                                    target="_blank">The Little Plan café - Kế Hoạch Nhỏ café</a>
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
+        <table class="product-table">
+            <tbody>
+                <tr>
+                    <td class="photo-cell">
+                        <div class="image-container">
+                            <img src="https://res.cloudinary.com/dfzjtpp8f/image/upload/c_fill,w_400,h_400/v1763909112/the_little_plan_cafe_mbvxrj.jpg"
+                                alt="The Little Plan café 的貓咪照片">
+                        </div>
+                    </td>
+                    <td class="content-cell">
+                        <h3>The Little Plan café</h3>
+                        <p>這在河內，就...有路過的話可以去XD</p>
+                        <div class="link-area">
+                            <strong>Google map:</strong>
+                            <p> </p>
+                            <a href="https://maps.google.com/?cid=13425433835375390457&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl"
+                                target="_blank">The Little Plan café - Kế Hoạch Nhỏ café</a>
+                        </div>
+                    </td>
+                    </td>
+                </tr>
 
-                    <tr>
-                        <td class="photo-cell">
-                            <div class="image-container">
-                                <img src="https://res.cloudinary.com/dfzjtpp8f/image/upload/c_fill,w_400,h_400/v1763909053/20251120_213310_toafoc.jpg"
-                                    alt="Toast Chat 的貓咪照片">
-                            </div>
-                        </td>
-                        <td class="content-cell">
-                            <h3>Toast Chat</h3>
-                            <p>國父紀念館附近，店裡有很多可愛的貓。店員都是辣妹。</p>
-                            <div class="link-area">
-                                <strong>Google map:</strong>
-                                <a href="https://maps.app.goo.gl/toastchatlink" target="_blank">Toast Chat</a>
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                <tr>
+                    <td class="photo-cell">
+                        <div class="image-container">
+                            <img src="https://res.cloudinary.com/dfzjtpp8f/image/upload/c_fill,w_400,h_400/v1763909053/20251120_213310_toafoc.jpg"
+                                alt="Toast Chat 的貓咪照片">
+                        </div>
+                    </td>
+                    <td class="content-cell">
+                        <h3>Toast Chat</h3>
+                        <p>國父紀念館附近，店裡有很多可愛的貓。店員都是辣妹。</p>
+                        <div class="link-area">
+                            <strong>Google map:</strong>
+                            <a href="https://maps.app.goo.gl/toastchatlink" target="_blank">Toast Chat</a>
+                        </div>
+                    </td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
